@@ -9,3 +9,6 @@ def test_single_number_returns_itself(calculator):
 def test_multiple_comma_seperated_numbers_returns_sum(calculator):
     assert calculator.add("1,5,9") == 15
 
+def test_multiple_comma_seperated_values_with_new_line_between_numbers(calculator):
+    assert calculator.add("1\n2,3") == 6
+
