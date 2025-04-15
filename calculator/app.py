@@ -25,7 +25,7 @@ class StringCalculator:
         if negative_numbers:
             raise NegativeNumberException(negatives=negative_numbers)
 
-        result = sum(numbers)
+        result = sum(num for num in numbers if num <= 1000)
         return result
     
     def get_called_count(self) -> int:

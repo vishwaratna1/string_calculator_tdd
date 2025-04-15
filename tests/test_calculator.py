@@ -27,3 +27,6 @@ def test_get_called_count(calculator):
     calculator.add("3")
     assert calculator.get_called_count() == 2
 
+def test_ignores_numbers_bigger_than_1000(calculator):
+    assert calculator.add("2,1001") == 2
+
