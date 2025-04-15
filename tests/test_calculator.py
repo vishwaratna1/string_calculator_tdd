@@ -33,3 +33,9 @@ def test_ignores_numbers_bigger_than_1000(calculator):
 
 def test_supports_custom_delimiter_of_any_length(calculator):
     assert calculator.add("//[***]\n1***2***3") == 6
+
+def test_multiple_custom_delimiters(calculator): 
+    assert calculator.add("//[*][%]\n1*2%3") == 6
+
+def test_multiple_long_custom_delimiters(calculator):
+    assert calculator.add("//[**][%%]\n1**2%%3") == 6

@@ -14,8 +14,18 @@ class StringCalculator:
             last_delimiter_index = numbers.find("\n")
             custom_delimiter = numbers[2:last_delimiter_index]
             if custom_delimiter.startswith("["):
-                delimiter = custom_delimiter[1:-1]
-                delimiters.append(delimiter)
+                start = 0
+                while start < len(custom_delimiter):
+                    start = custom_delimiter.find("[", start)
+                    end = custom_delimiter.find("]", start)
+
+                    if start == -1 or end == -1:
+                        break
+
+                    delimiter = custom_delimiter[start + 1:end]
+                    delimiters.append(delimiter)
+                    start = end + 1
+
             else:
                 delimiters.append(custom_delimiter)
 
