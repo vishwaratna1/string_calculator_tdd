@@ -22,3 +22,8 @@ def test_throw_exception_for_negative_numbers(calculator):
         calculator.add("1,-2,3")
     assert "negative numbers not allowed: -2" in str(excinfo.value)
 
+def test_get_called_count(calculator):
+    calculator.add("1,2")
+    calculator.add("3")
+    assert calculator.get_called_count() == 2
+

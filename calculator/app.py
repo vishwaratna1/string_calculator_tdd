@@ -1,7 +1,14 @@
 class StringCalculator:
+
+    def __init__(self):
+        self.call_count = 0
+        
     def add(self, numbers: str) -> int:
+        self.call_count += 1
+
         if not numbers:
             return 0
+        
         delimiters = [",", "\n"]
         if numbers.startswith("//"):
             last_delimiter_index = numbers.find("\n")
@@ -20,6 +27,9 @@ class StringCalculator:
 
         result = sum(numbers)
         return result
+    
+    def get_called_count(self) -> int:
+        return self.call_count
     
 class NegativeNumberException(Exception):
     def __init__(self, negatives):
