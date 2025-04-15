@@ -1,4 +1,6 @@
+import pytest
 from tests.fixtures.calculator_fixtures import calculator
+from calculator.app import NegativeNumberException
 
 def test_empty_string_returns_zero(calculator):
     assert calculator.add("") == 0
@@ -14,4 +16,9 @@ def test_multiple_comma_seperated_values_with_new_line_between_numbers(calculato
 
 def test_supports_custom_delimiter(calculator):
     assert calculator.add("//;\n1;2") == 3
+
+def test_throw_exception_for_negative_numbers(calculator):
+    with pytest.raises(NegativeNumberException) as excinfo:
+        calculator.add("1,-2,3")
+    assert "negative numbers not allowed: -2" in str(excinfo.value)
 

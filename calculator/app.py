@@ -12,5 +12,16 @@ class StringCalculator:
         for delimiter in delimiters:
             numbers = numbers.replace(delimiter, ",")
 
-        result = sum(int(num) for num in numbers.split(","))
+        numbers = [int(num) for num in numbers.split(",")]
+        negative_numbers = [num for num in numbers if num < 0]
+
+        if negative_numbers:
+            raise NegativeNumberException(negatives=negative_numbers)
+
+        result = sum(numbers)
         return result
+    
+class NegativeNumberException(Exception):
+    def __init__(self, negatives):
+        message = f"negative numbers not allowed: {', '.join(map(str, negatives))}"
+        super().__init__(message)
