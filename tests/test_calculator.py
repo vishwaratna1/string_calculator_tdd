@@ -6,3 +6,6 @@ def test_empty_string_returns_zero(calculator):
 def test_single_number_returns_itself(calculator):
     assert calculator.add("1") == 1
 
+def test_multiple_comma_seperated_numbers_returns_sum(calculator):
+    assert calculator.add("1,5,9") == 15
+
