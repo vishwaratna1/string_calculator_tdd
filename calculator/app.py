@@ -13,13 +13,18 @@ class StringCalculator:
         if numbers.startswith("//"):
             last_delimiter_index = numbers.find("\n")
             custom_delimiter = numbers[2:last_delimiter_index]
-            delimiters.append(custom_delimiter)
-            numbers = numbers[last_delimiter_index+1: ]
+            if custom_delimiter.startswith("["):
+                delimiter = custom_delimiter[1:-1]
+                delimiters.append(delimiter)
+            else:
+                delimiters.append(custom_delimiter)
+
+            numbers = numbers[last_delimiter_index + 1:]
 
         for delimiter in delimiters:
             numbers = numbers.replace(delimiter, ",")
 
-        numbers = [int(num) for num in numbers.split(",")]
+        numbers = [int(num) for num in numbers.split(",") if num]
         negative_numbers = [num for num in numbers if num < 0]
 
         if negative_numbers:

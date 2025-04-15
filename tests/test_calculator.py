@@ -30,3 +30,6 @@ def test_get_called_count(calculator):
 def test_ignores_numbers_bigger_than_1000(calculator):
     assert calculator.add("2,1001") == 2
 
+
+def test_supports_custom_delimiter_of_any_length(calculator):
+    assert calculator.add("//[***]\n1***2***3") == 6
